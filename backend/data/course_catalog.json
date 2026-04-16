@@ -2,13 +2,13 @@
   "courses": [
     {
       "id": "course_001",
-      "title": "Prompt Engineering for DevOps Engineers",
-      "provider": "YouTube/Abhishek",
-      "url": "https://www.youtube.com/watch?v=BFY8-NtfBdM",
-      "duration_hours": 3,
+      "title": "Prompt Engineering - OpenAI Beginner Guide",
+      "provider": "OpenAI",
+      "url": "https://platform.openai.com/docs/guides/prompt-engineering",
+      "duration_hours": 2,
       "difficulty_level": "beginner",
       "category": "Prompt Engineering",
-      "tags": ["Prompt Engineering", "AI Fundamentals", "DevOps"],
+      "tags": ["Prompt Engineering", "AI Fundamentals", "Best Practices"],
       "is_free": true
     },
     {
@@ -20,6 +20,17 @@
       "difficulty_level": "beginner",
       "category": "Prompt Engineering",
       "tags": ["Claude", "Prompt Engineering", "API"],
+      "is_free": true
+    },
+    {
+      "id": "course_002b",
+      "title": "Google AI Prompt Design - Get Started with Gemini",
+      "provider": "Google",
+      "url": "https://ai.google.dev/tutorials/python_quickstart",
+      "duration_hours": 2,
+      "difficulty_level": "beginner",
+      "category": "Prompt Engineering",
+      "tags": ["Gemini", "Prompt Engineering", "Google AI"],
       "is_free": true
     },
     {

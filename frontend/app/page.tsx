@@ -15,6 +15,7 @@ const ROLES = [
 
 export default function Dashboard() {
   const [selectedRole, setSelectedRole] = useState('devops')
+  const [selectedPhase, setSelectedPhase] = useState(0)
   const [roleInfo, setRoleInfo] = useState<any>(null)
   const [targetSkills, setTargetSkills] = useState<any[]>([])
   const [currentSkills, setCurrentSkills] = useState<any[]>([])
@@ -482,7 +483,7 @@ export default function Dashboard() {
           <div>
             <h3>Recommended Free Course Path 📚</h3>
             <p style={{ color: '#666' }}>
-              Follow this 7-step learning path to upskill as an AI DevOps engineer
+              Click on a phase to view courses and details for that learning stage
             </p>
 
             {currentRoleDetails.criticalPhases.length > 0 && (
@@ -521,129 +522,175 @@ export default function Dashboard() {
               </div>
             )}
 
-            {groupedCourses.map((phaseData, phaseIdx) => (
-              <div key={phaseIdx} style={{ marginBottom: '2.5rem' }}>
+            {/* Phase Tabs */}
+            <div style={{
+              display: 'flex',
+              gap: '0.5rem',
+              marginBottom: '2rem',
+              borderBottom: '2px solid #e5e7eb',
+              overflowX: 'auto',
+              paddingBottom: '1rem'
+            }}>
+              {coursePhases.map((phase, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedPhase(idx)}
+                  style={{
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem 0.5rem 0 0',
+                    border: 'none',
+                    background: selectedPhase === idx ? phase.color : '#f3f4f6',
+                    color: selectedPhase === idx ? '#000' : '#666',
+                    cursor: 'pointer',
+                    fontWeight: selectedPhase === idx ? 'bold' : 'normal',
+                    fontSize: '0.95rem',
+                    transition: 'all 0.2s',
+                    borderBottom: selectedPhase === idx ? `3px solid ${phase.color}` : 'none'
+                  }}
+                >
+                  {phase.icon} {phase.phase}
+                </button>
+              ))}
+            </div>
+
+            {/* Selected Phase Details */}
+            {coursePhases[selectedPhase] && (
+              <div>
                 <div style={{
-                  background: phaseData.color,
-                  padding: '1rem 1.5rem',
+                  background: coursePhases[selectedPhase].color,
+                  padding: '2rem',
                   borderRadius: '0.5rem',
-                  marginBottom: '1rem',
-                  border: '2px solid #e5e7eb'
+                  marginBottom: '2rem',
+                  border: `2px solid ${coursePhases[selectedPhase].color}`
                 }}>
-                  <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>
-                    {phaseData.icon} {phaseData.phase}
-                  </h4>
-                  <p style={{ margin: '0.5rem 0', color: '#555', fontSize: '0.95rem', lineHeight: '1.5' }}>
-                    {phaseData.description}
+                  <h2 style={{ marginTop: 0, marginBottom: '1rem' }}>
+                    {coursePhases[selectedPhase].icon} {coursePhases[selectedPhase].phase}
+                  </h2>
+                  <p style={{ margin: '0 0 1rem 0', color: '#555', fontSize: '1rem', lineHeight: '1.6' }}>
+                    {coursePhases[selectedPhase].description}
                   </p>
-                  <div style={{ fontSize: '0.875rem', color: '#666', marginTop: '0.5rem' }}>
-                    {phaseData.courses.length} courses • {Math.ceil(phaseData.courses.reduce((sum, c) => sum + c.duration_hours, 0) / 2)} hours of learning
+
+                  {/* Phase Stats Table */}
+                  <div style={{
+                    background: 'white',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '1.5rem'
+                  }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+                      <div style={{ textAlign: 'center', padding: '1rem', borderRight: '1px solid #e5e7eb' }}>
+                        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#1e40af' }}>
+                          {groupedCourses[selectedPhase]?.courses.length || 0}
+                        </div>
+                        <div style={{ color: '#666', fontSize: '0.9rem' }}>Courses</div>
+                      </div>
+                      <div style={{ textAlign: 'center', padding: '1rem', borderRight: '1px solid #e5e7eb' }}>
+                        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#16a34a' }}>
+                          {groupedCourses[selectedPhase]
+                            ? Math.ceil(groupedCourses[selectedPhase].courses.reduce((sum: number, c: any) => sum + c.duration_hours, 0))
+                            : 0}
+                        </div>
+                        <div style={{ color: '#666', fontSize: '0.9rem' }}>Hours</div>
+                      </div>
+                      <div style={{ textAlign: 'center', padding: '1rem' }}>
+                        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#dc2626' }}>
+                          {selectedPhase + 1}/7
+                        </div>
+                        <div style={{ color: '#666', fontSize: '0.9rem' }}>Phase</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                  gap: '1rem'
-                }}>
-                  {phaseData.courses.map(course => (
-                    <div
-                      key={course.id}
-                      style={{
-                        background: 'white',
-                        border: '1px solid #e5e7eb',
-                        borderRadius: '0.5rem',
-                        overflow: 'hidden',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        transition: 'transform 0.2s, box-shadow 0.2s',
-                        cursor: 'pointer'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateY(-4px)'
-                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'translateY(0)'
-                        e.currentTarget.style.boxShadow = 'none'
-                      }}
-                    >
-                      <div style={{
-                        background: '#f3f4f6',
-                        padding: '1rem',
-                        borderBottom: '1px solid #e5e7eb'
-                      }}>
-                        <div style={{
-                          fontSize: '0.75rem',
-                          color: '#666',
-                          marginBottom: '0.5rem'
-                        }}>
-                          {course.provider}
-                        </div>
-                        <h4 style={{ margin: '0.5rem 0' }}>{course.title}</h4>
-                      </div>
-
-                      <div style={{ padding: '1rem', flex: 1 }}>
-                        <div style={{ marginBottom: '0.75rem' }}>
-                          <span style={{
-                            background: '#dbeafe',
-                            color: '#0369a1',
-                            padding: '0.25rem 0.75rem',
-                            borderRadius: '0.25rem',
-                            fontSize: '0.75rem',
-                            fontWeight: 'bold'
-                          }}>
-                            {course.category}
-                          </span>
-                          <span style={{
-                            background: '#fef3c7',
-                            color: '#92400e',
-                            padding: '0.25rem 0.75rem',
-                            borderRadius: '0.25rem',
-                            fontSize: '0.75rem',
-                            fontWeight: 'bold',
-                            marginLeft: '0.5rem'
-                          }}>
-                            {course.difficulty_level}
-                          </span>
-                        </div>
-
-                        <div style={{ color: '#666', fontSize: '0.875rem' }}>
-                          {course.duration_hours && (
-                            <div>⏱️ {course.duration_hours} hours</div>
-                          )}
-                        </div>
-                      </div>
-
-                      <div style={{
-                        padding: '1rem',
-                        borderTop: '1px solid #e5e7eb'
-                      }}>
-                        <a
-                          href={course.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            display: 'block',
-                            background: '#1e40af',
-                            color: 'white',
-                            padding: '0.75rem',
-                            textAlign: 'center',
-                            textDecoration: 'none',
-                            borderRadius: '0.25rem',
-                            fontSize: '0.875rem',
-                            fontWeight: 'bold'
-                          }}
-                        >
-                          Start Learning →
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {/* Courses Table for Selected Phase */}
+                {groupedCourses[selectedPhase] && groupedCourses[selectedPhase].courses.length > 0 ? (
+                  <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
+                    <table style={{
+                      width: '100%',
+                      borderCollapse: 'collapse',
+                      border: '1px solid #e5e7eb'
+                    }}>
+                      <thead>
+                        <tr style={{ background: '#f3f4f6', borderBottom: '2px solid #e5e7eb' }}>
+                          <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 'bold', color: '#1f2937' }}>
+                            Course Title
+                          </th>
+                          <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 'bold', color: '#1f2937' }}>
+                            Provider
+                          </th>
+                          <th style={{ padding: '1rem', textAlign: 'center', fontWeight: 'bold', color: '#1f2937' }}>
+                            Duration
+                          </th>
+                          <th style={{ padding: '1rem', textAlign: 'center', fontWeight: 'bold', color: '#1f2937' }}>
+                            Difficulty
+                          </th>
+                          <th style={{ padding: '1rem', textAlign: 'center', fontWeight: 'bold', color: '#1f2937' }}>
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {groupedCourses[selectedPhase].courses.map((course, idx) => (
+                          <tr key={idx} style={{ borderBottom: '1px solid #e5e7eb', hover: { background: '#f9fafb' } }}>
+                            <td style={{ padding: '1rem', color: '#1f2937', fontWeight: '500' }}>
+                              {course.title}
+                            </td>
+                            <td style={{ padding: '1rem', color: '#666' }}>
+                              {course.provider}
+                            </td>
+                            <td style={{ padding: '1rem', textAlign: 'center', color: '#666' }}>
+                              ⏱️ {course.duration_hours}h
+                            </td>
+                            <td style={{ padding: '1rem', textAlign: 'center' }}>
+                              <span style={{
+                                background: course.difficulty_level === 'beginner' ? '#dbeafe' : course.difficulty_level === 'intermediate' ? '#fef3c7' : '#fecaca',
+                                color: course.difficulty_level === 'beginner' ? '#0369a1' : course.difficulty_level === 'intermediate' ? '#92400e' : '#7c2d12',
+                                padding: '0.25rem 0.75rem',
+                                borderRadius: '0.25rem',
+                                fontSize: '0.85rem',
+                                fontWeight: 'bold'
+                              }}>
+                                {course.difficulty_level}
+                              </span>
+                            </td>
+                            <td style={{ padding: '1rem', textAlign: 'center' }}>
+                              <a
+                                href={course.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  background: '#1e40af',
+                                  color: 'white',
+                                  padding: '0.5rem 1rem',
+                                  textDecoration: 'none',
+                                  borderRadius: '0.25rem',
+                                  fontSize: '0.85rem',
+                                  fontWeight: 'bold',
+                                  display: 'inline-block'
+                                }}
+                              >
+                                Visit →
+                              </a>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div style={{
+                    textAlign: 'center',
+                    padding: '2rem',
+                    color: '#666',
+                    background: '#f9fafb',
+                    borderRadius: '0.5rem',
+                    marginBottom: '2rem'
+                  }}>
+                    No courses available for this phase yet.
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
+            )}
 
           {/* Learning Path Summary */}
           <div style={{

@@ -295,105 +295,132 @@ export default function Dashboard() {
             </div>
           )}
 
-          {/* MUST Have Skills */}
-          {currentRoleDetails.mustHave.length > 0 && (
-            <div style={{ marginBottom: '2rem' }}>
-              <h3>✅ MUST Have Skills</h3>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-                gap: '0.75rem'
-              }}>
-                {currentRoleDetails.mustHave.map((skill, idx) => (
-                  <div key={idx}
-                    style={{
-                      background: '#dcfce7',
-                      border: '1px solid #86efac',
-                      padding: '1rem',
-                      borderRadius: '0.5rem'
-                    }}
-                  >
-                    <strong>✓ {skill}</strong>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* SHOULD Have Skills */}
-          {currentRoleDetails.shouldHave.length > 0 && (
-            <div style={{ marginBottom: '2rem' }}>
-              <h3>🌟 SHOULD Have Skills</h3>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-                gap: '0.75rem'
-              }}>
-                {currentRoleDetails.shouldHave.map((skill, idx) => (
-                  <div key={idx}
-                    style={{
-                      background: '#fef3c7',
-                      border: '1px solid #fde68a',
-                      padding: '1rem',
-                      borderRadius: '0.5rem'
-                    }}
-                  >
-                    <strong>★ {skill}</strong>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Current Skills */}
+          {/* Unified Skills View */}
           <div style={{ marginBottom: '2rem' }}>
-            <h3>Current Skills</h3>
+            <h3>💼 Skills & Competencies</h3>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-              gap: '0.75rem'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+              marginBottom: '2rem'
             }}>
-              {currentSkills.map((skill, idx) => (
-                <div key={idx}
-                  style={{
-                    background: '#f0fdf4',
-                    border: '1px solid #bbf7d0',
-                    padding: '1rem',
-                    borderRadius: '0.5rem'
-                  }}
-                >
-                  <div style={{ fontWeight: 'bold' }}>{skill.name}</div>
-                  <div style={{ fontSize: '0.875rem', color: '#666' }}>
-                    {skill.category} • {skill.level}
+              {/* Current Skills */}
+              {currentSkills.length > 0 && (
+                <div style={{
+                  background: '#f0fdf4',
+                  border: '2px solid #bbf7d0',
+                  borderRadius: '0.5rem',
+                  padding: '1.5rem'
+                }}>
+                  <h4 style={{ marginTop: 0, marginBottom: '1rem', color: '#16a34a' }}>
+                    ✅ Current Skills (You Have)
+                  </h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {currentSkills.map((skill, idx) => (
+                      <div key={idx}
+                        style={{
+                          background: 'white',
+                          border: '1px solid #86efac',
+                          padding: '0.5rem 0.75rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.9rem'
+                        }}
+                      >
+                        {skill.name}
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              )}
 
-          {/* Target Skills */}
-          <div style={{ marginBottom: '2rem' }}>
-            <h3>Target AI Skills</h3>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-              gap: '0.75rem'
-            }}>
-              {targetSkills.map((skill, idx) => (
-                <div key={idx}
-                  style={{
-                    background: '#fef3c7',
-                    border: '1px solid #fde68a',
-                    padding: '1rem',
-                    borderRadius: '0.5rem'
-                  }}
-                >
-                  <div style={{ fontWeight: 'bold' }}>🎯 {skill.name}</div>
-                  <div style={{ fontSize: '0.875rem', color: '#666' }}>
-                    {skill.category} • {skill.level}
+              {/* MUST Have Skills */}
+              {currentRoleDetails.mustHave.length > 0 && (
+                <div style={{
+                  background: '#dcfce7',
+                  border: '2px solid #86efac',
+                  borderRadius: '0.5rem',
+                  padding: '1.5rem'
+                }}>
+                  <h4 style={{ marginTop: 0, marginBottom: '1rem', color: '#15803d' }}>
+                    🔴 MUST Have Skills
+                  </h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {currentRoleDetails.mustHave.map((skill, idx) => (
+                      <div key={idx}
+                        style={{
+                          background: 'white',
+                          border: '1px solid #4ade80',
+                          padding: '0.5rem 0.75rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.9rem',
+                          fontWeight: '500'
+                        }}
+                      >
+                        ✓ {skill}
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+              )}
+
+              {/* SHOULD Have Skills */}
+              {currentRoleDetails.shouldHave.length > 0 && (
+                <div style={{
+                  background: '#fef3c7',
+                  border: '2px solid #fde68a',
+                  borderRadius: '0.5rem',
+                  padding: '1.5rem'
+                }}>
+                  <h4 style={{ marginTop: 0, marginBottom: '1rem', color: '#b45309' }}>
+                    🌟 SHOULD Have Skills
+                  </h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {currentRoleDetails.shouldHave.map((skill, idx) => (
+                      <div key={idx}
+                        style={{
+                          background: 'white',
+                          border: '1px solid #fcd34d',
+                          padding: '0.5rem 0.75rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.9rem',
+                          fontWeight: '500'
+                        }}
+                      >
+                        ★ {skill}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Target Skills */}
+              {targetSkills.length > 0 && (
+                <div style={{
+                  background: '#fef3c7',
+                  border: '2px solid #fde68a',
+                  borderRadius: '0.5rem',
+                  padding: '1.5rem'
+                }}>
+                  <h4 style={{ marginTop: 0, marginBottom: '1rem', color: '#d97706' }}>
+                    🎯 Target AI Skills (To Learn)
+                  </h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {targetSkills.map((skill, idx) => (
+                      <div key={idx}
+                        style={{
+                          background: 'white',
+                          border: '1px solid #fcd34d',
+                          padding: '0.5rem 0.75rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.9rem'
+                        }}
+                      >
+                        {skill.name}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -403,29 +430,29 @@ export default function Dashboard() {
 
             {/* Phase Tabs */}
             <div style={{
-              display: 'flex',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
               gap: '0.5rem',
-              marginBottom: '2rem',
-              borderBottom: '2px solid #e5e7eb',
-              overflowX: 'auto',
-              paddingBottom: '1rem'
+              marginBottom: '2rem'
             }}>
               {coursePhases.map((phase, idx) => (
                 <button key={idx}
                   onClick={() => setSelectedPhase(idx)}
                   style={{
-                    padding: '0.75rem 1.5rem',
-                    borderRadius: '0.5rem 0.5rem 0 0',
-                    border: 'none',
-                    background: selectedPhase === idx ? phase.color : '#f3f4f6',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    border: selectedPhase === idx ? `3px solid ${phase.color}` : '1px solid #e5e7eb',
+                    background: selectedPhase === idx ? phase.color : '#f9fafb',
                     color: selectedPhase === idx ? '#000' : '#666',
                     cursor: 'pointer',
                     fontWeight: selectedPhase === idx ? 'bold' : 'normal',
-                    fontSize: '0.95rem',
-                    whiteSpace: 'nowrap'
+                    fontSize: '0.9rem',
+                    transition: 'all 0.2s',
+                    textAlign: 'center'
                   }}
                 >
-                  {phase.icon} {phase.phase}
+                  <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{phase.icon}</div>
+                  <div>{phase.phase}</div>
                 </button>
               ))}
             </div>

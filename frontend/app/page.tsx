@@ -85,29 +85,136 @@ export default function Dashboard() {
       criticalPhases: ['Phase 1', 'Phase 3', 'Phase 5', 'Phase 6']
     },
     senior_devops: {
-      overview: 'Senior DevOps Engineers architect large-scale infrastructure and lead MLOps platform design.',
+      overview: 'Senior DevOps Engineers architect large-scale infrastructure and lead MLOps platform design. They drive organizational automation initiatives.',
       responsibilities: [
         'Design and architect enterprise-scale infrastructure',
         'Lead MLOps and AI platform initiatives',
         'Implement advanced observability solutions',
         'Drive automation and efficiency across the organization',
-        'Mentor and guide junior engineers'
+        'Mentor and guide junior and mid-level engineers',
+        'Define DevOps strategies and best practices'
       ],
       mustHave: [
         'Advanced Kubernetes Architecture',
-        'Terraform Modules (reusable patterns)',
+        'Terraform Modules (reusable infrastructure patterns)',
         'Advanced Monitoring & Observability',
-        'CI/CD Pipeline Design',
-        'Infrastructure Architecture'
+        'CI/CD Pipeline Design (Jenkins expertise)',
+        'Infrastructure Architecture',
+        'Groovy & Shell Scripting (advanced)',
+        'Google Cloud Platform (advanced)',
+        'Linux System Administration (advanced)'
       ],
       shouldHave: [
         'MLOps Architecture',
         'ML Platform Design',
         'Feature Stores',
         'Model Registry & Governance',
-        'Python for ML Systems'
+        'Python for ML Systems',
+        'Cloud Security Architecture',
+        'Cost Optimization Strategies',
+        'Incident Management & Post-mortems'
       ],
       criticalPhases: ['Phase 1', 'Phase 3', 'Phase 5', 'Phase 6']
+    },
+    sre: {
+      overview: 'SRE Engineers focus on reliability, availability, and performance. They bridge operations and development to build resilient systems.',
+      responsibilities: [
+        'Ensure system reliability, uptime, and performance',
+        'Manage incident response and post-mortems',
+        'Monitor and optimize system performance',
+        'Implement observability and alerting strategies',
+        'Perform root cause analysis of failures',
+        'Manage on-call rotations and escalations',
+        'Automate operational tasks and runbooks'
+      ],
+      mustHave: [
+        'Kubernetes (advanced)',
+        'Monitoring & Alerting (Prometheus, Grafana, Datadog)',
+        'Incident Management (procedures, on-call systems)',
+        'System Performance Tuning',
+        'Infrastructure Automation',
+        'Linux (advanced)',
+        'Shell Scripting (advanced)',
+        'Log Analysis & Troubleshooting'
+      ],
+      shouldHave: [
+        'Python (monitoring and automation)',
+        'Cloud Platforms (AWS, GCP, Azure)',
+        'APM Tools (application performance monitoring)',
+        'Distributed Tracing (correlation across services)',
+        'Custom Metrics & Instrumentation',
+        'Cost Analysis & Optimization',
+        'Chaos Engineering (resilience testing)',
+        'Database Administration & Optimization'
+      ],
+      criticalPhases: ['Phase 1', 'Phase 4', 'Phase 6', 'Phase 7']
+    },
+    cloud_engineer: {
+      overview: 'Cloud Engineers design and manage cloud infrastructure and services. They optimize cloud resources for cost, performance, and security.',
+      responsibilities: [
+        'Design cloud architecture (AWS, GCP, Azure)',
+        'Provision and manage cloud resources',
+        'Implement cloud security and compliance',
+        'Optimize cloud costs and resource usage',
+        'Design disaster recovery and backup strategies',
+        'Implement Infrastructure as Code on cloud platforms',
+        'Manage cloud networking and connectivity'
+      ],
+      mustHave: [
+        'Cloud Platform Expertise (AWS/GCP/Azure)',
+        'Cloud Architecture Design',
+        'Networking (VPC, firewalls, load balancing)',
+        'Cost Optimization (resource efficiency)',
+        'Infrastructure as Code (Terraform, CloudFormation)',
+        'Cloud Security (IAM, encryption, compliance)',
+        'Cloud Managed Services (databases, storage)',
+        'Docker & Containerization'
+      ],
+      shouldHave: [
+        'Kubernetes on Cloud (GKE, EKS, AKS)',
+        'Multi-cloud Architecture',
+        'Disaster Recovery & Business Continuity',
+        'Cloud Migration Strategies',
+        'Python for Cloud Automation',
+        'Cloud Monitoring & Logging',
+        'API Management',
+        'Serverless Architecture (Functions, Lambda)'
+      ],
+      criticalPhases: ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 6']
+    },
+    platform_engineer: {
+      overview: 'Platform Engineers design and maintain Internal Developer Platforms (IDP) that enable developers to self-serve infrastructure and deployments.',
+      responsibilities: [
+        'Design Internal Developer Platforms (IDP)',
+        'Improve developer experience and self-service capabilities',
+        'Maintain CI/CD infrastructure and pipelines',
+        'Design deployment and release strategies',
+        'Manage platform security and compliance',
+        'Implement API gateways and service meshes',
+        'Support microservices and distributed systems',
+        'Build platform automation and tooling'
+      ],
+      mustHave: [
+        'Kubernetes (advanced architecture)',
+        'CI/CD Platforms (Jenkins, GitLab CI, GitHub Actions)',
+        'Internal Developer Platform Design',
+        'Microservices Architecture',
+        'API Design & Management',
+        'Infrastructure as Code (Terraform, Helm)',
+        'Container Orchestration (Docker, K8s)',
+        'Developer Experience Design'
+      ],
+      shouldHave: [
+        'Service Mesh (Istio, Linkerd)',
+        'API Gateways (Kong, Envoy)',
+        'Platform Observability',
+        'Multi-tenancy Architecture',
+        'Helm Package Management',
+        'GitOps (ArgoCD, Flux)',
+        'Go/Rust for Tooling Development',
+        'Security & RBAC Implementation'
+      ],
+      criticalPhases: ['Phase 1', 'Phase 4', 'Phase 5', 'Phase 6']
     }
   }
 
@@ -119,7 +226,7 @@ export default function Dashboard() {
     criticalPhases: []
   }
 
-  return (
+  // Define course phases in order with descriptions
   const coursePhases = [
     {
       phase: 'Phase 1: Prompt Engineering',

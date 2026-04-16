@@ -115,6 +115,11 @@ def list_all_courses():
     """Get all courses in the catalog"""
     return CourseService.get_all_courses()
 
+@app.get("/api/courses/role/{role}", response_model=List[Course])
+def get_courses_for_role(role: RoleType):
+    """Get courses recommended for a specific role"""
+    return CourseService.get_courses_for_role(role.value)
+
 @app.get("/api/courses/category/{category}", response_model=List[Course])
 def get_courses_by_category(category: str):
     """Get courses by category"""

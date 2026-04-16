@@ -33,7 +33,7 @@ export default function Dashboard() {
         axios.get(`${API_BASE}/api/skills/role/${selectedRole}/info`),
         axios.get(`${API_BASE}/api/skills/role/${selectedRole}/target`),
         axios.get(`${API_BASE}/api/skills/role/${selectedRole}/current`),
-        axios.get(`${API_BASE}/api/courses`),
+        axios.get(`${API_BASE}/api/courses/role/${selectedRole}`),
       ])
 
       setRoleInfo(infoRes.data)

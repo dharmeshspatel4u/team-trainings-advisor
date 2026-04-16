@@ -64,6 +64,7 @@ class Course(BaseModel):
     category: str
     tags: List[str]
     is_free: bool = True
+    recommended_for: Optional[List[str]] = None
 
 class CourseRecommendation(BaseModel):
     course: Course

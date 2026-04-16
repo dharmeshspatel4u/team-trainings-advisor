@@ -30,7 +30,8 @@ class CourseService:
                 difficulty_level=ProficiencyLevel(course.get("difficulty_level", "beginner")),
                 category=course["category"],
                 tags=course.get("tags", []),
-                is_free=course.get("is_free", True)
+                is_free=course.get("is_free", True),
+                recommended_for=course.get("recommended_for", [])
             )
             for course in catalog
         ]
@@ -72,9 +73,10 @@ class CourseService:
         return matching_courses[:max_results]
 
     @classmethod
-    def get_learning_path_courses(cls, category: str, max_difficulty: str = "advanced") -> List[Course]:
-        """Get a learning path: beginner -> intermediate -> advanced for a category"""
-        courses_in_category = cls.get_courses_by_category(category)
+    def get_courses_for_role(cls, role: str) -> List[Course]:
+        """Get courses recommended for a specific role"""
+        all_courses = cls.get_all_courses()
+        return [c for c in all_courses if c.recommended_for and role.lower() in [r.lower() for r in c.recommended_for]]
 
         # Sort by difficulty
         difficulty_order = {"awareness": 0, "beginner": 1, "intermediate": 2, "advanced": 3, "expert": 4}

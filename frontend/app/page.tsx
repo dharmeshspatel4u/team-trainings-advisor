@@ -48,7 +48,78 @@ export default function Dashboard() {
 
   const roleData = ROLES.find(r => r.key === selectedRole)
 
-  // Define course phases in order with descriptions
+  // Role details with MUST have and SHOULD have skills
+  const roleDetails: Record<string, any> = {
+    devops: {
+      overview: 'DevOps Engineers automate, deploy, and maintain infrastructure and applications. They bridge development and operations for rapid, reliable software delivery.',
+      responsibilities: [
+        'Provision and manage cloud resources (Google Cloud, on-premises VMs)',
+        'Design and implement CI/CD pipelines using Jenkins and Groovy',
+        'Write shell scripts for system administration and automation',
+        'Set up monitoring, logging, dashboards, and log-based alerts',
+        'Manage Kubernetes clusters, OS patching, and managed services upgrades',
+        'Implement Infrastructure as Code using Terraform and Google Cloud Build'
+      ],
+      mustHave: [
+        'Jenkins (pipeline development, declarative/scripted pipelines)',
+        'Groovy (Jenkins pipeline scripting)',
+        'Shell Scripting (Bash, advanced scripting)',
+        'Google Cloud Platform (Compute Engine, Cloud Run, managed services)',
+        'Kubernetes (deployment, scaling, troubleshooting)',
+        'Docker (containerization, image management)',
+        'Google Cloud Build (automated builds and deployments)',
+        'Monitoring Tools (Prometheus, Grafana, Datadog, Cloud Logging)',
+        'Infrastructure as Code (Terraform)',
+        'Linux Administration (user management, services)'
+      ],
+      shouldHave: [
+        'Python (automation, scripting, API integration)',
+        'Multi-cloud Experience (AWS, Azure, GCP)',
+        'Cloud Security (IAM, encryption, network security)',
+        'ArgoCD/Flux (GitOps approaches)',
+        'Helm (Kubernetes package management)',
+        'Cost Optimization (resource efficiency)',
+        'Configuration Management (Ansible, Puppet, Chef)',
+        'SRE Practices (error budgets, incident management)'
+      ],
+      criticalPhases: ['Phase 1', 'Phase 3', 'Phase 5', 'Phase 6']
+    },
+    senior_devops: {
+      overview: 'Senior DevOps Engineers architect large-scale infrastructure and lead MLOps platform design.',
+      responsibilities: [
+        'Design and architect enterprise-scale infrastructure',
+        'Lead MLOps and AI platform initiatives',
+        'Implement advanced observability solutions',
+        'Drive automation and efficiency across the organization',
+        'Mentor and guide junior engineers'
+      ],
+      mustHave: [
+        'Advanced Kubernetes Architecture',
+        'Terraform Modules (reusable patterns)',
+        'Advanced Monitoring & Observability',
+        'CI/CD Pipeline Design',
+        'Infrastructure Architecture'
+      ],
+      shouldHave: [
+        'MLOps Architecture',
+        'ML Platform Design',
+        'Feature Stores',
+        'Model Registry & Governance',
+        'Python for ML Systems'
+      ],
+      criticalPhases: ['Phase 1', 'Phase 3', 'Phase 5', 'Phase 6']
+    }
+  }
+
+  const currentRoleDetails = roleDetails[selectedRole as keyof typeof roleDetails] || {
+    overview: 'Professional DevOps and Infrastructure specialist',
+    responsibilities: [],
+    mustHave: [],
+    shouldHave: [],
+    criticalPhases: []
+  }
+
+  return (
   const coursePhases = [
     {
       phase: 'Phase 1: Prompt Engineering',
@@ -170,7 +241,81 @@ export default function Dashboard() {
                 {roleInfo?.target_ai_role || 'AI Specialist'}
               </div>
             </div>
+
+            {/* Role Overview */}
+            <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb' }}>
+              <h4 style={{ marginTop: 0, marginBottom: '0.75rem' }}>📋 Role Overview</h4>
+              <p style={{ margin: 0, color: '#555', lineHeight: '1.6' }}>
+                {currentRoleDetails.overview}
+              </p>
+            </div>
           </div>
+
+          {/* Role Responsibilities */}
+          {currentRoleDetails.responsibilities.length > 0 && (
+            <div style={{ marginBottom: '2rem' }}>
+              <h3>🎯 Primary Responsibilities</h3>
+              <ul style={{ lineHeight: '1.8', color: '#555' }}>
+                {currentRoleDetails.responsibilities.map((resp, idx) => (
+                  <li key={idx}>{resp}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* MUST Have Skills */}
+          {currentRoleDetails.mustHave.length > 0 && (
+            <div style={{ marginBottom: '2rem' }}>
+              <h3>✅ MUST Have Skills & Competencies</h3>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gap: '0.75rem'
+              }}>
+                {currentRoleDetails.mustHave.map((skill, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      background: '#dcfce7',
+                      border: '1px solid #86efac',
+                      padding: '1rem',
+                      borderRadius: '0.5rem',
+                      fontSize: '0.95rem'
+                    }}
+                  >
+                    <strong>✓ {skill}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* SHOULD Have Skills */}
+          {currentRoleDetails.shouldHave.length > 0 && (
+            <div style={{ marginBottom: '2rem' }}>
+              <h3>🌟 SHOULD Have Skills & Competencies</h3>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gap: '0.75rem'
+              }}>
+                {currentRoleDetails.shouldHave.map((skill, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      background: '#fef3c7',
+                      border: '1px solid #fde68a',
+                      padding: '1rem',
+                      borderRadius: '0.5rem',
+                      fontSize: '0.95rem'
+                    }}
+                  >
+                    <strong>★ {skill}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Current Skills */}
           <div style={{ marginBottom: '2rem' }}>
@@ -232,6 +377,42 @@ export default function Dashboard() {
             <p style={{ color: '#666' }}>
               Follow this 7-step learning path to upskill as an AI DevOps engineer
             </p>
+
+            {currentRoleDetails.criticalPhases.length > 0 && (
+              <div style={{
+                background: '#fef3c7',
+                border: '2px solid #fde68a',
+                borderRadius: '0.5rem',
+                padding: '1.5rem',
+                marginBottom: '2rem'
+              }}>
+                <h4 style={{ marginTop: 0, marginBottom: '0.75rem' }}>🔴 Critical Phases for Your Role</h4>
+                <p style={{ margin: '0 0 1rem 0', color: '#555', fontSize: '0.95rem' }}>
+                  These phases directly leverage your existing skills and have the highest impact for your AI DevOps journey:
+                </p>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.75rem'
+                }}>
+                  {currentRoleDetails.criticalPhases.map((phase, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        background: '#fbbf24',
+                        color: '#78350f',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '0.5rem',
+                        fontWeight: 'bold',
+                        fontSize: '0.9rem'
+                      }}
+                    >
+                      {phase}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {groupedCourses.map((phaseData, phaseIdx) => (
               <div key={phaseIdx} style={{ marginBottom: '2.5rem' }}>

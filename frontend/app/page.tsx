@@ -1,0 +1,382 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'
+
+const ROLES = [
+  { key: 'devops', label: 'DevOps Engineer', icon: '⚙️' },
+  { key: 'senior_devops', label: 'Senior DevOps Engineer', icon: '🏆' },
+  { key: 'sre', label: 'SRE Engineer', icon: '🔍' },
+  { key: 'cloud_engineer', label: 'Cloud Engineer', icon: '☁️' },
+  { key: 'platform_engineer', label: 'Platform Engineer', icon: '🏗️' },
+]
+
+export default function Dashboard() {
+  const [selectedRole, setSelectedRole] = useState('devops')
+  const [roleInfo, setRoleInfo] = useState<any>(null)
+  const [targetSkills, setTargetSkills] = useState<any[]>([])
+  const [currentSkills, setCurrentSkills] = useState<any[]>([])
+  const [courses, setCourses] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    loadRoleData()
+  }, [selectedRole])
+
+  const loadRoleData = async () => {
+    try {
+      setLoading(true)
+      const [infoRes, targetRes, currentRes, coursesRes] = await Promise.all([
+        axios.get(`${API_BASE}/api/skills/role/${selectedRole}/info`),
+        axios.get(`${API_BASE}/api/skills/role/${selectedRole}/target`),
+        axios.get(`${API_BASE}/api/skills/role/${selectedRole}/current`),
+        axios.get(`${API_BASE}/api/courses`),
+      ])
+
+      setRoleInfo(infoRes.data)
+      setTargetSkills(targetRes.data)
+      setCurrentSkills(currentRes.data)
+      setCourses(coursesRes.data)
+    } catch (error) {
+      console.error('Error loading role data:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const roleData = ROLES.find(r => r.key === selectedRole)
+
+  // Define course phases in order with descriptions
+  const coursePhases = [
+    {
+      phase: 'Phase 1: Prompt Engineering',
+      categories: ['Prompt Engineering'],
+      color: '#fef3c7',
+      icon: '🎯',
+      description: 'Foundation for all AI interactions. Learn one-shot and n-shot prompting techniques to get expected responses from AI models. Most AI failures are due to poor prompts, not poor models.'
+    },
+    {
+      phase: 'Phase 2: Local LLMs',
+      categories: ['Local LLMs'],
+      color: '#c7d2fe',
+      icon: '💻',
+      description: 'Run language models locally using Ollama, Hugging Face, and Docker. Cost-effective testing before using expensive cloud APIs. Learn GGUF models that run on CPU.'
+    },
+    {
+      phase: 'Phase 3: Cloud APIs',
+      categories: ['Cloud LLM APIs', 'Programming'],
+      color: '#d1d5db',
+      icon: '☁️',
+      description: 'Make API calls to production models (OpenAI, Anthropic Claude) using Python and shell scripting. Essential for production automation like auto-generating Dockerfiles.'
+    },
+    {
+      phase: 'Phase 4: AI Agents',
+      categories: ['AI Agents'],
+      color: '#eccfdf',
+      icon: '🤖',
+      description: 'Automate complex, repetitive tasks using CrewAI framework. Build agents for pod failure analysis, deployment verification, and cost optimization without building from scratch.'
+    },
+    {
+      phase: 'Phase 5: Workflow Automation',
+      categories: ['Workflow Automation', 'CI/CD Automation'],
+      color: '#d4f1d4',
+      icon: '⚡',
+      description: 'Visual, no-code/low-code AI integration using N8N or Simaine. Add AI stages to CI/CD pipelines for security analysis, intelligent testing, and automated documentation.'
+    },
+    {
+      phase: 'Phase 6: AIOps & Monitoring',
+      categories: ['AIOps', 'Observability', 'AI Deployment'],
+      color: '#fecaca',
+      icon: '📊',
+      description: 'Combine observability with AI intelligence using Grafana, Datadog, or Dynatrace. Get anomaly detection, pattern recognition, and predictive alerts instead of reactive threshold-based alerts.'
+    },
+    {
+      phase: 'Phase 7: Continuous Learning',
+      categories: ['Continuous Learning'],
+      color: '#b3e5fc',
+      icon: '📚',
+      description: 'Stay updated with AI/DevOps trends (15-30 minutes daily). Follow LinkedIn, YouTube, and official docs for new model releases, open-source projects, and integration announcements.'
+    },
+  ]
+
+  // Group courses by phase
+  const groupedCourses = coursePhases.map(p => ({
+    ...p,
+    courses: courses.filter(c => p.categories.includes(c.category))
+  })).filter(p => p.courses.length > 0)
+
+  return (
+    <div>
+      <h1>AI Training Recommendations by Role</h1>
+      <p style={{ color: '#666', fontSize: '1.125rem' }}>
+        Select a role to see recommended AI courses and learning path for upskilling
+      </p>
+
+      {/* Role Selection Cards */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '1rem',
+        marginBottom: '2rem'
+      }}>
+        {ROLES.map(role => (
+          <button
+            key={role.key}
+            onClick={() => setSelectedRole(role.key)}
+            style={{
+              padding: '1.5rem',
+              borderRadius: '0.5rem',
+              border: selectedRole === role.key ? '3px solid #1e40af' : '1px solid #e5e7eb',
+              background: selectedRole === role.key ? '#f0f9ff' : 'white',
+              cursor: 'pointer',
+              textAlign: 'left',
+              transition: 'all 0.2s'
+            }}
+          >
+            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{role.icon}</div>
+            <div style={{ fontWeight: 'bold', color: selectedRole === role.key ? '#1e40af' : '#1f2937' }}>
+              {role.label}
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {loading ? (
+        <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>Loading...</div>
+      ) : (
+        <div>
+          {/* Target Role Info */}
+          <div style={{
+            background: '#f0f9ff',
+            border: '2px solid #bfdbfe',
+            borderRadius: '0.5rem',
+            padding: '2rem',
+            marginBottom: '2rem'
+          }}>
+            <h2 style={{ marginTop: 0 }}>
+              {roleData?.icon} {roleData?.label}
+            </h2>
+            <div style={{
+              background: 'white',
+              padding: '1rem',
+              borderRadius: '0.25rem',
+              marginBottom: '1rem',
+              border: '1px solid #bfdbfe'
+            }}>
+              <strong>Target AI Role:</strong>
+              <div style={{ fontSize: '1.25rem', color: '#1e40af', marginTop: '0.5rem' }}>
+                {roleInfo?.target_ai_role || 'AI Specialist'}
+              </div>
+            </div>
+          </div>
+
+          {/* Current Skills */}
+          <div style={{ marginBottom: '2rem' }}>
+            <h3>Current Skills (What you already have)</h3>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+              gap: '0.75rem'
+            }}>
+              {currentSkills.map((skill, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: '#f0fdf4',
+                    border: '1px solid #bbf7d0',
+                    padding: '1rem',
+                    borderRadius: '0.5rem'
+                  }}
+                >
+                  <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>{skill.name}</div>
+                  <div style={{ fontSize: '0.875rem', color: '#666' }}>
+                    {skill.category} • {skill.level}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Target Skills */}
+          <div style={{ marginBottom: '2rem' }}>
+            <h3>Target AI Skills (Skills to learn)</h3>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+              gap: '0.75rem'
+            }}>
+              {targetSkills.map((skill, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: '#fef3c7',
+                    border: '1px solid #fde68a',
+                    padding: '1rem',
+                    borderRadius: '0.5rem'
+                  }}
+                >
+                  <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>🎯 {skill.name}</div>
+                  <div style={{ fontSize: '0.875rem', color: '#666' }}>
+                    {skill.category} • {skill.level}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Recommended Courses by Phase */}
+          <div>
+            <h3>Recommended Free Course Path 📚</h3>
+            <p style={{ color: '#666' }}>
+              Follow this 7-step learning path to upskill as an AI DevOps engineer
+            </p>
+
+            {groupedCourses.map((phaseData, phaseIdx) => (
+              <div key={phaseIdx} style={{ marginBottom: '2.5rem' }}>
+                <div style={{
+                  background: phaseData.color,
+                  padding: '1rem 1.5rem',
+                  borderRadius: '0.5rem',
+                  marginBottom: '1rem',
+                  border: '2px solid #e5e7eb'
+                }}>
+                  <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>
+                    {phaseData.icon} {phaseData.phase}
+                  </h4>
+                  <p style={{ margin: '0.5rem 0', color: '#555', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                    {phaseData.description}
+                  </p>
+                  <div style={{ fontSize: '0.875rem', color: '#666', marginTop: '0.5rem' }}>
+                    {phaseData.courses.length} courses • {Math.ceil(phaseData.courses.reduce((sum, c) => sum + c.duration_hours, 0) / 2)} hours of learning
+                  </div>
+                </div>
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                  gap: '1rem'
+                }}>
+                  {phaseData.courses.map(course => (
+                    <div
+                      key={course.id}
+                      style={{
+                        background: 'white',
+                        border: '1px solid #e5e7eb',
+                        borderRadius: '0.5rem',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        transition: 'transform 0.2s, box-shadow 0.2s',
+                        cursor: 'pointer'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-4px)'
+                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)'
+                        e.currentTarget.style.boxShadow = 'none'
+                      }}
+                    >
+                      <div style={{
+                        background: '#f3f4f6',
+                        padding: '1rem',
+                        borderBottom: '1px solid #e5e7eb'
+                      }}>
+                        <div style={{
+                          fontSize: '0.75rem',
+                          color: '#666',
+                          marginBottom: '0.5rem'
+                        }}>
+                          {course.provider}
+                        </div>
+                        <h4 style={{ margin: '0.5rem 0' }}>{course.title}</h4>
+                      </div>
+
+                      <div style={{ padding: '1rem', flex: 1 }}>
+                        <div style={{ marginBottom: '0.75rem' }}>
+                          <span style={{
+                            background: '#dbeafe',
+                            color: '#0369a1',
+                            padding: '0.25rem 0.75rem',
+                            borderRadius: '0.25rem',
+                            fontSize: '0.75rem',
+                            fontWeight: 'bold'
+                          }}>
+                            {course.category}
+                          </span>
+                          <span style={{
+                            background: '#fef3c7',
+                            color: '#92400e',
+                            padding: '0.25rem 0.75rem',
+                            borderRadius: '0.25rem',
+                            fontSize: '0.75rem',
+                            fontWeight: 'bold',
+                            marginLeft: '0.5rem'
+                          }}>
+                            {course.difficulty_level}
+                          </span>
+                        </div>
+
+                        <div style={{ color: '#666', fontSize: '0.875rem' }}>
+                          {course.duration_hours && (
+                            <div>⏱️ {course.duration_hours} hours</div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div style={{
+                        padding: '1rem',
+                        borderTop: '1px solid #e5e7eb'
+                      }}>
+                        <a
+                          href={course.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'block',
+                            background: '#1e40af',
+                            color: 'white',
+                            padding: '0.75rem',
+                            textAlign: 'center',
+                            textDecoration: 'none',
+                            borderRadius: '0.25rem',
+                            fontSize: '0.875rem',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          Start Learning →
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Learning Path Summary */}
+          <div style={{
+            background: '#f0fdf4',
+            border: '1px solid #bbf7d0',
+            borderRadius: '0.5rem',
+            padding: '1.5rem',
+            marginTop: '2rem'
+          }}>
+            <h3 style={{ marginTop: 0 }}>📖 Suggested Learning Path</h3>
+            <ol style={{ lineHeight: 1.8 }}>
+              <li><strong>Phase 1 (Weeks 1-4):</strong> Start with ML Fundamentals and Python courses</li>
+              <li><strong>Phase 2 (Weeks 5-12):</strong> Learn role-specific AI tools (MLOps, Cloud AI, etc.)</li>
+              <li><strong>Phase 3 (Weeks 13-24):</strong> Advanced topics and hands-on project work</li>
+            </ol>
+            <p style={{ color: '#666', fontStyle: 'italic' }}>
+              Estimated timeline: 3-6 months depending on prior experience and study pace
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}

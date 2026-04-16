@@ -1,0 +1,224 @@
+{
+  "courses": [
+    {
+      "id": "course_001",
+      "title": "Prompt Engineering for DevOps Engineers",
+      "provider": "YouTube/Abhishek",
+      "url": "https://www.youtube.com/watch?v=BFY8-NtfBdM",
+      "duration_hours": 3,
+      "difficulty_level": "beginner",
+      "category": "Prompt Engineering",
+      "tags": ["Prompt Engineering", "AI Fundamentals", "DevOps"],
+      "is_free": true
+    },
+    {
+      "id": "course_002",
+      "title": "Anthropic Claude API & Prompt Engineering",
+      "provider": "Anthropic",
+      "url": "https://docs.anthropic.com/",
+      "duration_hours": 5,
+      "difficulty_level": "beginner",
+      "category": "Prompt Engineering",
+      "tags": ["Claude", "Prompt Engineering", "API"],
+      "is_free": true
+    },
+    {
+      "id": "course_003",
+      "title": "Prompt Engineering Guide - DAIR-AI",
+      "provider": "DAIR-AI",
+      "url": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+      "duration_hours": 4,
+      "difficulty_level": "beginner",
+      "category": "Prompt Engineering",
+      "tags": ["Prompt Engineering", "One-shot", "N-shot"],
+      "is_free": true
+    },
+    {
+      "id": "course_004",
+      "title": "Ollama - Run LLMs Locally",
+      "provider": "Ollama",
+      "url": "https://ollama.ai/",
+      "duration_hours": 2,
+      "difficulty_level": "beginner",
+      "category": "Local LLMs",
+      "tags": ["Ollama", "Local Models", "LLM Deployment"],
+      "is_free": true
+    },
+    {
+      "id": "course_005",
+      "title": "Hugging Face Models & Tools",
+      "provider": "Hugging Face",
+      "url": "https://huggingface.co/docs",
+      "duration_hours": 4,
+      "difficulty_level": "beginner",
+      "category": "Local LLMs",
+      "tags": ["Hugging Face", "Model Repository", "Transformers"],
+      "is_free": true
+    },
+    {
+      "id": "course_006",
+      "title": "OpenAI API Documentation",
+      "provider": "OpenAI",
+      "url": "https://platform.openai.com/docs",
+      "duration_hours": 3,
+      "difficulty_level": "beginner",
+      "category": "Cloud LLM APIs",
+      "tags": ["OpenAI", "API", "Python"],
+      "is_free": true
+    },
+    {
+      "id": "course_007",
+      "title": "Anthropic Claude API Integration",
+      "provider": "Anthropic",
+      "url": "https://docs.anthropic.com/claude/reference/getting-started-with-the-api",
+      "duration_hours": 3,
+      "difficulty_level": "beginner",
+      "category": "Cloud LLM APIs",
+      "tags": ["Claude", "API", "Python"],
+      "is_free": true
+    },
+    {
+      "id": "course_008",
+      "title": "Python for AI Automation",
+      "provider": "Real Python",
+      "url": "https://realpython.com/",
+      "duration_hours": 10,
+      "difficulty_level": "beginner",
+      "category": "Programming",
+      "tags": ["Python", "API", "Automation"],
+      "is_free": true
+    },
+    {
+      "id": "course_009",
+      "title": "CrewAI - AI Agents Framework",
+      "provider": "CrewAI",
+      "url": "https://github.com/joaomdmoura/crewai",
+      "duration_hours": 3,
+      "difficulty_level": "beginner",
+      "category": "AI Agents",
+      "tags": ["CrewAI", "AI Agents", "Automation"],
+      "is_free": true
+    },
+    {
+      "id": "course_010",
+      "title": "CrewAI Examples & Tutorials",
+      "provider": "CrewAI",
+      "url": "https://github.com/joaomdmoura/crewai-examples",
+      "duration_hours": 4,
+      "difficulty_level": "intermediate",
+      "category": "AI Agents",
+      "tags": ["CrewAI", "Examples", "DevOps"],
+      "is_free": true
+    },
+    {
+      "id": "course_011",
+      "title": "N8N Workflow Automation",
+      "provider": "N8N",
+      "url": "https://n8n.io/",
+      "duration_hours": 6,
+      "difficulty_level": "beginner",
+      "category": "Workflow Automation",
+      "tags": ["N8N", "CI/CD", "Automation"],
+      "is_free": true
+    },
+    {
+      "id": "course_012",
+      "title": "Simaine AI Workflow Automation",
+      "provider": "Simaine",
+      "url": "https://sim.ai/",
+      "duration_hours": 6,
+      "difficulty_level": "beginner",
+      "category": "Workflow Automation",
+      "tags": ["Simaine", "AI", "Workflows"],
+      "is_free": true
+    },
+    {
+      "id": "course_013",
+      "title": "Grafana AIOps - Intelligent Monitoring",
+      "provider": "Grafana",
+      "url": "https://grafana.com/",
+      "duration_hours": 8,
+      "difficulty_level": "intermediate",
+      "category": "AIOps",
+      "tags": ["Grafana", "AIOps", "Monitoring"],
+      "is_free": true
+    },
+    {
+      "id": "course_014",
+      "title": "Datadog AIOps & Anomaly Detection",
+      "provider": "Datadog",
+      "url": "https://www.datadog.com/",
+      "duration_hours": 10,
+      "difficulty_level": "intermediate",
+      "category": "AIOps",
+      "tags": ["Datadog", "AIOps", "Anomaly Detection"],
+      "is_free": true
+    },
+    {
+      "id": "course_015",
+      "title": "Dynatrace Intelligent Monitoring",
+      "provider": "Dynatrace",
+      "url": "https://www.dynatrace.com/",
+      "duration_hours": 10,
+      "difficulty_level": "intermediate",
+      "category": "AIOps",
+      "tags": ["Dynatrace", "AIOps", "Root Cause"],
+      "is_free": true
+    },
+    {
+      "id": "course_016",
+      "title": "Docker for LLM Deployment",
+      "provider": "Docker",
+      "url": "https://www.docker.com/",
+      "duration_hours": 4,
+      "difficulty_level": "beginner",
+      "category": "Local LLMs",
+      "tags": ["Docker", "LLM", "Containerization"],
+      "is_free": true
+    },
+    {
+      "id": "course_017",
+      "title": "Kubernetes for AI Workloads",
+      "provider": "Kubernetes.io",
+      "url": "https://kubernetes.io/docs/",
+      "duration_hours": 8,
+      "difficulty_level": "intermediate",
+      "category": "AI Deployment",
+      "tags": ["Kubernetes", "AI", "Deployment"],
+      "is_free": true
+    },
+    {
+      "id": "course_018",
+      "title": "AI in CI/CD Pipelines",
+      "provider": "GitHub",
+      "url": "https://github.com/features/copilot",
+      "duration_hours": 4,
+      "difficulty_level": "intermediate",
+      "category": "CI/CD Automation",
+      "tags": ["GitHub", "Copilot", "CI/CD"],
+      "is_free": true
+    },
+    {
+      "id": "course_019",
+      "title": "OpenTelemetry for Observability",
+      "provider": "OpenTelemetry",
+      "url": "https://opentelemetry.io/",
+      "duration_hours": 6,
+      "difficulty_level": "intermediate",
+      "category": "Observability",
+      "tags": ["Observability", "Monitoring", "Telemetry"],
+      "is_free": true
+    },
+    {
+      "id": "course_020",
+      "title": "Stay Updated: AI & DevOps News",
+      "provider": "LinkedIn/YouTube/Medium",
+      "url": "https://www.linkedin.com/",
+      "duration_hours": 1,
+      "difficulty_level": "beginner",
+      "category": "Continuous Learning",
+      "tags": ["LinkedIn", "News", "Trends"],
+      "is_free": true
+    }
+  ]
+}

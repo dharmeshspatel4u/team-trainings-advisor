@@ -1,0 +1,368 @@
+Hello everyone, my name is Abhishek and
+welcome back to my channel. Just tell me
+something honestly. How many of you have
+this question? Abishek, I'm working as a
+DevOps instant but I'm not sure how to
+start using AI as part of my day-to-day
+activities and I'm not sure where to get
+started from. Let me tell you this is a
+very valid question and fortunately you
+are watching the right video because in
+today's video I'll tell you the exact
+road map that you have to follow to
+start using AI as part of your
+day-to-day activities. This is going to
+be a sevenstep road map and trust me
+after completing this road map you will
+be very confident about AI. So without
+wasting any time let's get started.
+The first thing that you have to do is
+start with prompt in scenario.
+This is one of the things that is mostly
+ignored these days. But irrespective of
+your field, it can be DevOps,
+development, everyone has to focus on
+this skill and fortunately this just
+takes two to three hours not more than
+that. Now let me tell you why is this
+important.
+Take two engineers working with the same
+tool. It can be chat GBD or it can be
+GitHub copilot claude. One gets the
+expected response but the other one does
+not get what they're looking for and
+most of the times they end up blaming AI
+that you know AI is not good enough in
+giving the expected response but you
+know what is the culprit? The culprit is
+prompt.
+So in today's world, everyone has to
+know how to interact with AI and that
+interaction depends on the prompt
+engineering skill.
+In our AI DevOps playlist, I have
+already covered prompt engineering. So
+whatever I'm going to explain in this
+video, they are already covered on our
+channel. So you don't have to worry
+where to go, you know, how to learn
+these skills. Just focus on the skills
+while I'm explaining them. So the first
+one is prompt in scenario. You should at
+least know what is oneshot prompting.
+You should know what is nshot prompting
+and within your prompt how you can give
+some examples to get expected response
+from the model. And as I told you this
+will only take two to three hours for
+you not more than that. Initially start
+with chat GBD. So once you learn the
+prompting skill, you can verify that by
+using those prompts on the chat GPT and
+then comes your second step. Test your
+prompt engineering skills on the local
+models because if you try with the
+production models like anthropic models
+or open AI models, they are expensive.
+You cannot you know validate your
+prompts on those models. But what you
+can do, you can run the models locally
+and test the prompts. To run the models,
+you need to know,
+you need to know hugging face and docker
+model runner. That's it. Just these
+three concepts and you're good enough.
+Once again, you know, I'm telling this
+for one last time in the video. Whatever
+I'm going to cover, it can be the skills
+or it can be the tools, they are already
+covered in the A assistant DevOps
+playlist on the channel. So, they are
+available for free of cost for you.
+Now, you might say, but Abishek, apart
+from prompting, is there any real
+advantage of learning how to run the
+models locally? This will hardly take
+one to two hours for you. And by
+learning this thing you can be up to
+date in the market because if you look
+at the latest advancement in the space
+of AI for example open claw it can work
+with the local models. Take Olama the
+support for Olama is significantly
+increasing. Just two days back exactly
+two days back Visual Studio Code
+announced the support to Ola directly
+using GitHub copilot. So if you have a
+powerful model running on your machine
+using visual studio code and Olama you
+can directly get ID capabilities and
+agent capabilities within your visual
+studio code for free of cost and going
+ahead the models are going to become
+very very light. Recently GGUF models
+they can run on the CPU as well. And
+going ahead you will find small language
+models with maybe 500 million
+parameters, 400 million parameters which
+will be easy to run on any laptop. So
+definitely learn this skill. This will
+only take 1 to two hours for you. There
+are only three tools that you have to
+learn. Olama, hugging face, TMR, modern
+runner.
+Then once you're done with this, go to
+the next step. Okay, learn how to run
+the models locally. Experiment with the
+prompting that you have learned to see
+from the local models if you can get the
+expected response and then start making
+API calls to the cloud models. What are
+cloud models? The proprietary models of
+OpenAI or Anthropic. learn within your
+Python scripting how you can make API
+calls to these models to get whatever
+response that you are expecting.
+Why? Because at this point of time,
+these are the most powerful models. I'll
+give you a simple use case. Let's say
+your management asks you as a DevOps
+finisher. They ask you to automate
+something. Whenever know developer
+provides the source code maybe a simple
+application they have to execute your
+Python script and this Python script
+should generate docker file for the
+application. This should be an automatic
+process. How will you do it? There are
+so many programming languages. There are
+so many use cases. The best way to do it
+write a Python script and within the
+Python script using API call create a
+prompt and make an API call to the let's
+say open AI model and this model will
+return the docker file for you and you
+can return this docker file as the
+output of your Python script to the
+developer. So to automate such things
+which are going to become very very
+common as you move forward in your role,
+you need to learn how to make API calls
+to the cloud models. Right? So again
+this is not very difficult. If you're
+using shell scripting, you just need to
+know how to use curl. If you're using
+Python scripting, you just need to know
+how to use some Python packages, right?
+and how these Python packages can make
+the API calls they are also available on
+our playlist.
+Then the fourth thing. Okay. So till now
+I covered about prompt engineering. This
+is the first skill that you have to
+learn. Then running the models locally.
+Then using the cloud models through the
+API calls within your scripting. This
+can automate a lot of use cases for you.
+And fourth one you need to learn about
+AI agents. Now whenever I say a agents
+or whenever you hear about this term you
+feel this is rocket science but this has
+become very very easy today you don't
+need to learn lang chain or you don't
+need to learn lang graph there are some
+frameworks like crew AI
+very very powerful framework within 15
+minutes you can develop your first AI
+agent everything to prompting and
+manifest files. Of course, little bit
+Python scripting but most of it is with
+the prompting and the manifest files. So
+using crew you can get the boiler plate
+within the boiler plate just modify the
+prompt just modify the manifest and you
+have your AI agent ready by AI agent
+let's say you want to automate the pod
+failure analysis right very simple and
+repetitive task within your organization
+you must have seen a pod goes down very
+very frequently every time developer
+creates a support request to you trying
+to or me messages on Slack asking what
+is the reason for the pod failure.
+Instead, you can develop an AI agent and
+deploy that to the Kubernetes cluster
+and the developer can directly interact
+with the agent in the Kubernetes cluster
+or even you can uh automate this using
+the slack. So you just send uh
+Kubernetes
+or you just tell the AI agent
+drop an email, right? As simple as that.
+Whenever there is a pod failure, this
+agent should analyze the part failure
+and send an email. To do these kind of
+things, you need to learn AI agents and
+the best framework is crew AI. Fine.
+Then the fifth thing, the fifth thing is
+to learn workflow automation platforms.
+For example, NAL or workflow automation
+platform like Simai.
+SIMA is open source. It is free of cost.
+NAN is also free of cost. I mean to just
+get started, you can start with these
+platforms. I'll give you a use case here
+as well. Let's say you are working on a
+CI/CD pipeline and on every pull request
+you run multiple stages in the CI/CD
+pipeline.
+But now you want to incorporate AI as
+one of the stage in the CI/CD pipeline.
+Let's say AI to analyze any security
+issues in the pull request. Now, how
+would you achieve this? You need AI in
+this workflow. What you can do? You can
+incorporate NA or SIM AI as part of this
+workflow. In fact, you can build this
+entire workflow using Cai or NAN as
+well. This is the recent video on the
+channel. I explained how you can bring
+SI CI to dev sec ops pipeline. So if you
+want you can watch that video or you can
+go through the documentation as well.
+Everything is available on the channel.
+Finally
+you need to know once you once you have
+mastered the workflow automation
+platforms
+just learn AI ops as a skill.
+What is AI ops? Just introducing
+observability
+with AI. Right? If you already have an
+observability solution, just adding AI
+within the observability is called as AI
+ops. For example,
+with the existing observability system
+within your organization, you can
+definitely send alerts when something
+goes wrong, you can configure a
+threshold and once the threshold is met
+through the alert, you can configure
+mail notification.
+You can do it today. But what if there
+is some hidden pattern within your
+metrics? Let's say there is a sudden CPU
+spike from 20 to 60 and your alert is
+configured for 70 CPU utilization.
+Okay, this is something that you have to
+worry about because there is a sudden
+spike from 20 to 16. Tomorrow this can
+go from 20 to 100 as well. But your
+existing observability platform or the
+stack cannot actually notify about you
+about these things. Whereas if you have
+a ops configured it can detect these
+kind of anomalies and instantly notify
+you. So you have to learn a ops if you
+are a devops engineer or s sur. There
+are a lot of other use cases. I'm just
+talking about a very basic use case. And
+how would you learn AOPS?
+This is the most easiest things to learn
+because today every observability
+platform. If you're already working as a
+DevOps engineer, if there is
+observability stack within your
+organization,
+it's most likely there is already AOPS
+plug-in that your platform supports. If
+you're using graphana, aops is
+supported. If you're using data dog,
+dino trace, site 24x7, ground cover, all
+of them have observability aop
+solutions,
+they are available as plugins. Maybe
+your organization hasn't enabled the
+plug-in. As DevOps engineer, you can
+just enable the plug-in in the lower
+environment. You can perform a proof of
+concept and then convince your
+management to get a ops in production.
+Finally, one last thing that you have to
+do is keep yourself up to date. Now, all
+the things that I have explained here,
+it can be a ops, it can be workflow
+automation, AI agents, API calls, local
+model, prompt engineering. These are
+some skills that you have to learn. But
+to keep yourself up to date, you have to
+build a discipline. every day just 15
+minutes start reading about things that
+are happening in the space of AI for
+example recent advancements like open
+clock
+you will come to know about these kind
+of things if you are active on LinkedIn
+if you are active on some blogging
+platforms if you subscribe to the right
+YouTube channels where those creators
+talk about the advancements in the space
+of AI or maybe as I told you the local
+models today they support with VS code
+using Olama even these kind of things
+you will only know if you are
+subscribing to the right content so keep
+yourself up to date just spend 15 to 30
+minutes a day and you are good finally
+I'll repeat the things that you have to
+learn and how much time would it take
+prompt engineering is the first thing
+that you have to learn it would take 2
+to 3 hours for you local models hardly 1
+to two hours because there are only
+three things that you have to learn.
+Olama, hugging face, do local model run.
+Then how to make API calls to the cloud
+provider. If you know shell scripting
+and python scripting again this would
+take two to three hours for you because
+there are things that you have to learn
+like how to configure the temperature
+not the temperature uh in the usual
+terms but there is again something in
+the
+models or the tokens ecosystem. So you
+need to know how to use tokens
+effectively, how to configure the
+temperature, how to get response, right?
+How to curate your prompts. So this
+would take 2 to three hours if you know
+shell and python scripting. Then the AI
+agents, the crew AI, this would take
+another two to three hours for you to
+master. Nentai,
+this would take little time. Maybe you
+need half day or one day to learn how to
+use nit and cmai as part of your
+workflow. If you're talking an point of
+view, you might take 7 to 8 hours to
+master this concept.
+AOPS as a solution,
+this would take 2 to three days for you
+because first you have to understand the
+concept, then you have to understand how
+AOPS can be implemented. Then you have
+to go to an enterprise platform and
+learn a ops through that platform
+keeping yourself up to date every day 15
+minutes. So this is a clear road map. If
+you want to transition to a assisted
+DevOps role or AI DevOps engineering
+role, if you have any questions about
+it, do let me know in the comment
+section. I'm more than happy to let you
+know. And if you like the video, please
+share it within your network because
+these videos can really make a shift in
+the DevOps engineer career. See you all
+in the next video. Take care.

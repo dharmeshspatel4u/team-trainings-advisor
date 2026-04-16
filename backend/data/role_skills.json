@@ -1,0 +1,110 @@
+{
+  "devops": {
+    "role_name": "DevOps Engineer",
+    "target_ai_role": "AI DevOps Engineer",
+    "current_skills": [
+      {"name": "Kubernetes", "category": "Container Orchestration", "level": "intermediate"},
+      {"name": "Docker", "category": "Containerization", "level": "intermediate"},
+      {"name": "CI/CD Pipelines", "category": "DevOps Tools", "level": "intermediate"},
+      {"name": "Infrastructure as Code (Terraform)", "category": "DevOps Tools", "level": "intermediate"},
+      {"name": "Linux Administration", "category": "Operating Systems", "level": "advanced"},
+      {"name": "Bash/Shell Scripting", "category": "Scripting", "level": "advanced"},
+      {"name": "Monitoring & Logging", "category": "Observability", "level": "intermediate"}
+    ],
+    "target_skills": [
+      {"name": "Prompt Engineering", "category": "GenAI Fundamentals", "level": "beginner"},
+      {"name": "Local LLM Deployment (Ollama)", "category": "AI Tools", "level": "beginner"},
+      {"name": "Hugging Face & Model Management", "category": "AI Tools", "level": "beginner"},
+      {"name": "Cloud LLM API Calls (OpenAI, Anthropic)", "category": "GenAI Integration", "level": "beginner"},
+      {"name": "Python for AI Automation", "category": "Programming", "level": "beginner"},
+      {"name": "AI Agents (CrewAI)", "category": "AI Automation", "level": "beginner"},
+      {"name": "Workflow Automation (N8N, Simaine)", "category": "CI/CD Automation", "level": "beginner"},
+      {"name": "AIOps Implementation", "category": "Observability", "level": "intermediate"},
+      {"name": "Intelligent Monitoring (Grafana AIOps, Datadog)", "category": "Observability", "level": "intermediate"}
+    ]
+  },
+  "senior_devops": {
+    "role_name": "Senior DevOps Engineer",
+    "target_ai_role": "AI Platform Lead / MLOps Architect",
+    "current_skills": [
+      {"name": "Kubernetes Architecture", "category": "Container Orchestration", "level": "advanced"},
+      {"name": "Docker", "category": "Containerization", "level": "advanced"},
+      {"name": "CI/CD Pipeline Design", "category": "DevOps Tools", "level": "advanced"},
+      {"name": "Terraform/IaC", "category": "DevOps Tools", "level": "advanced"},
+      {"name": "Linux System Administration", "category": "Operating Systems", "level": "advanced"},
+      {"name": "Monitoring & Logging", "category": "Observability", "level": "advanced"}
+    ],
+    "target_skills": [
+      {"name": "MLOps Architecture", "category": "AI/ML", "level": "advanced"},
+      {"name": "ML Platform Design", "category": "Platform Engineering", "level": "advanced"},
+      {"name": "Feature Stores", "category": "ML Infrastructure", "level": "intermediate"},
+      {"name": "Model Registry & Governance", "category": "ML Tools", "level": "intermediate"},
+      {"name": "ML Monitoring & Observability", "category": "ML Monitoring", "level": "advanced"},
+      {"name": "LLMOps", "category": "GenAI", "level": "intermediate"},
+      {"name": "Python for ML Systems", "category": "Programming", "level": "intermediate"}
+    ]
+  },
+  "sre": {
+    "role_name": "SRE Engineer",
+    "target_ai_role": "AI/ML SRE",
+    "current_skills": [
+      {"name": "Kubernetes", "category": "Container Orchestration", "level": "advanced"},
+      {"name": "Monitoring & Alerting", "category": "Observability", "level": "advanced"},
+      {"name": "Incident Management", "category": "Operations", "level": "advanced"},
+      {"name": "System Performance Tuning", "category": "Operations", "level": "advanced"},
+      {"name": "Infrastructure Automation", "category": "DevOps Tools", "level": "intermediate"},
+      {"name": "Linux", "category": "Operating Systems", "level": "advanced"}
+    ],
+    "target_skills": [
+      {"name": "ML Model Health Monitoring", "category": "ML Monitoring", "level": "intermediate"},
+      {"name": "Data Drift Detection", "category": "ML Monitoring", "level": "beginner"},
+      {"name": "LLM Observability", "category": "GenAI", "level": "beginner"},
+      {"name": "ML Performance Optimization", "category": "ML Operations", "level": "intermediate"},
+      {"name": "ML Incident Response", "category": "Operations", "level": "intermediate"},
+      {"name": "Python for Monitoring", "category": "Programming", "level": "beginner"},
+      {"name": "Prometheus/Grafana for ML", "category": "Observability", "level": "intermediate"}
+    ]
+  },
+  "cloud_engineer": {
+    "role_name": "Cloud Engineer",
+    "target_ai_role": "Cloud AI Engineer",
+    "current_skills": [
+      {"name": "AWS/GCP/Azure", "category": "Cloud Platforms", "level": "advanced"},
+      {"name": "Cloud Architecture", "category": "Cloud Platforms", "level": "advanced"},
+      {"name": "Networking", "category": "Infrastructure", "level": "intermediate"},
+      {"name": "Cost Optimization", "category": "Cloud Platforms", "level": "intermediate"},
+      {"name": "Infrastructure as Code", "category": "DevOps Tools", "level": "intermediate"},
+      {"name": "Cloud Security", "category": "Security", "level": "intermediate"}
+    ],
+    "target_skills": [
+      {"name": "Managed ML Services (SageMaker/Vertex AI)", "category": "Cloud AI", "level": "intermediate"},
+      {"name": "LLM APIs (Claude, GPT)", "category": "GenAI", "level": "beginner"},
+      {"name": "RAG (Retrieval Augmented Generation)", "category": "GenAI", "level": "beginner"},
+      {"name": "Vector Databases", "category": "ML Infrastructure", "level": "beginner"},
+      {"name": "ML Cost Optimization", "category": "Cloud AI", "level": "intermediate"},
+      {"name": "AI/ML Security & Governance", "category": "Security", "level": "intermediate"},
+      {"name": "Prompt Engineering", "category": "GenAI", "level": "awareness"}
+    ]
+  },
+  "platform_engineer": {
+    "role_name": "Platform Engineer",
+    "target_ai_role": "AI Platform Engineer",
+    "current_skills": [
+      {"name": "Internal Developer Platform Design", "category": "Platform Engineering", "level": "advanced"},
+      {"name": "Kubernetes", "category": "Container Orchestration", "level": "advanced"},
+      {"name": "Developer Experience", "category": "Platform Engineering", "level": "advanced"},
+      {"name": "CI/CD Pipelines", "category": "DevOps Tools", "level": "advanced"},
+      {"name": "API Design", "category": "Software Architecture", "level": "intermediate"},
+      {"name": "Microservices", "category": "Software Architecture", "level": "intermediate"}
+    ],
+    "target_skills": [
+      {"name": "ML Platform Architecture", "category": "Platform Engineering", "level": "advanced"},
+      {"name": "Feature Store Design", "category": "ML Infrastructure", "level": "intermediate"},
+      {"name": "Model Registry & Governance", "category": "ML Tools", "level": "intermediate"},
+      {"name": "ML Deployment Pipelines", "category": "ML Tools", "level": "intermediate"},
+      {"name": "LLM Application Frameworks", "category": "GenAI", "level": "beginner"},
+      {"name": "ML Developer Experience", "category": "Platform Engineering", "level": "intermediate"},
+      {"name": "Python/Go for ML Systems", "category": "Programming", "level": "intermediate"}
+    ]
+  }
+}

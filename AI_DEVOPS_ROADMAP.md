@@ -1,5 +1,5 @@
 # AI DevOps Engineer Roadmap
-## Based on YouTube Video Analysis: "7-Step Roadmap for DevOps Engineers to Become AI DevOps"
+## 7-Step Learning Path for DevOps Engineers
 
 ---
 
@@ -25,10 +25,10 @@ This roadmap is designed for DevOps engineers to transition to AI DevOps enginee
 - GitHub Copilot
 
 **Recommended Free Courses:**
-1. Anthropic's Claude Prompt Engineering Guide
-2. DAIR-AI Prompt Engineering Guide (GitHub)
-3. YouTube: Prompt Engineering for DevOps Engineers
-4. OpenAI Prompt Engineering Best Practices
+1. OpenAI Prompt Engineering Guide
+2. Anthropic Claude Documentation
+3. DAIR-AI Prompt Engineering Guide (GitHub)
+4. Google Gemini Quick Start Guide
 
 **Time:** 2-3 hours
 
@@ -334,7 +334,7 @@ Developer creates pull request
 ### Step 1: Prompt Engineering
 - Anthropic Docs: https://docs.anthropic.com/
 - DAIR-AI Guide: https://github.com/dair-ai/Prompt-Engineering-Guide
-- YouTube: "Prompt Engineering for DevOps" channels
+- **Official Documentation** - OpenAI, Anthropic, Google AI releases
 
 ### Step 2: Local Models
 - Ollama: https://ollama.ai/
@@ -352,7 +352,7 @@ Developer creates pull request
 
 ### Step 5: Workflow Automation
 - N8N: https://n8n.io/ (self-hosted)
-- Simaine: https://simannai.com/
+- Simaine: https://sim.ai/
 
 ### Step 6: AIOps
 - Grafana: https://grafana.com/

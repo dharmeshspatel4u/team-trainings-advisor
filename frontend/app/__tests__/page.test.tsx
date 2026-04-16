@@ -23,10 +23,10 @@ describe('Dashboard Component', () => {
   const mockCourses = [
     {
       id: 'course_001',
-      title: 'Prompt Engineering for DevOps Engineers',
-      provider: 'YouTube/Abhishek',
-      url: 'https://example.com',
-      duration_hours: 3,
+      title: 'Prompt Engineering - OpenAI Beginner Guide',
+      provider: 'OpenAI',
+      url: 'https://platform.openai.com/docs/guides/prompt-engineering',
+      duration_hours: 2,
       difficulty_level: 'beginner',
       category: 'Prompt Engineering',
       tags: ['Prompt Engineering'],
